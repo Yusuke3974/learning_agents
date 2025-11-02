@@ -1,0 +1,43 @@
+{
+  "agents": [
+    {
+      "name": "teacher",
+      "description": "学習コンテンツの提供と説明を行う教師エージェント。質問の種類を分類し、適切なエージェントに転送します。",
+      "capabilities": [
+        "質問の種類分類（説明依頼、練習問題依頼、復習依頼）",
+        "OpenAI APIを使用した直接説明",
+        "他のエージェントへのタスク転送",
+        "A2A通信プロトコル対応"
+      ],
+      "endpoint": "/teacher/ask",
+      "prompt_file": "prompts/teacher_prompt.txt"
+    },
+    {
+      "name": "quiz",
+      "description": "クイズの生成と評価を行うクイズエージェント。学習者の理解度を確認するための質の高いクイズを生成します。",
+      "capabilities": [
+        "トピック、難易度、問題タイプに応じたクイズ生成",
+        "OpenAI APIを使用したクイズ生成",
+        "複数選択問題の作成",
+        "A2A通信プロトコル対応",
+        "フェールバック機能（モックレスポンス）"
+      ],
+      "endpoint": "/quiz/generate-quiz",
+      "prompt_file": "prompts/quiz_prompt.txt"
+    },
+    {
+      "name": "review",
+      "description": "学習内容の復習とフィードバックを提供する復習エージェント。過去の学習履歴を分析し、効果的な復習コンテンツを提供します。",
+      "capabilities": [
+        "学習ログの分析と要約",
+        "弱点の特定とランキング",
+        "復習コンテンツの生成",
+        "MCP統合（past_notesツール）",
+        "A2A通信プロトコル対応"
+      ],
+      "endpoint": "/review/review",
+      "prompt_file": "prompts/review_prompt.txt"
+    }
+  ]
+}
+
